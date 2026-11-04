@@ -2,11 +2,11 @@
 
 **Google Maps for a codebase.** NodeMap is a Chrome extension that turns any GitHub repository into an interactive map of its files, then explains each part in plain English using **Gemma 4 running locally on your laptop**.
 
-> Built at **RowdyLaunch**, Hacktoberfest Hack Day at UTSA, October 31, 2026
-> Tracks: 📚 **Open Source Education** · 🤖 **Best Open-Source AI Project (Gemma 4)**
+> 🏆 **1st place, Best Open-Source AI Project** at Hacktoberfest Hack Day San Antonio, hosted by **RowdyLaunch** at UTSA (October 31, 2026)
 
-<!-- TODO: add a screenshot or GIF of the side panel -->
-![NodeMap side panel](docs/Screenshot.png)
+![NodeMap side panel next to a GitHub repo](docs/Screenshot.png)
+
+> **v1:** built in one day. The core works today, and it's the foundation for what's next. See the [Roadmap](#roadmap).
 
 ---
 
@@ -80,7 +80,7 @@ Speed on a laptop CPU, which is how most students will run it:
 2. Click the **N** icon in the toolbar.
 3. Click a dot, press **Explain in detail**, or ask a question and press **Trace**.
 
-**Optional:** to use a faster laptop's GPU, change `baseUrl` in `lib/gemma.js` to that machine's address. To try the engine from the terminal:
+**Optional:** to use a faster computer's GPU, change `baseUrl` in `lib/gemma.js` to that machine's address. To try the engine from the terminal (requires Node.js 18+):
 ```bash
 node test/run.mjs https://github.com/pallets/flask --ai --ask "how does a request get handled?"
 ```
@@ -118,16 +118,27 @@ sidepanel.js    draws it with Cytoscape.js in Chrome's side panel
 | `lib/gemma.js` | All Gemma 4 prompts and calls (Ollama, plus optional Google AI Studio) |
 | `test/` | Terminal tests for the engine |
 
-## Limitations
+## Roadmap
 
-- Understands connections in **JavaScript/TypeScript, Python and HTML** only.
-- On a laptop without a graphics card, detailed tours and traces can take 20–40 seconds (they stream as they go).
-- Chrome only; requires Ollama running locally.
-- Unauthenticated GitHub requests are limited to 60 per hour per network. NodeMap uses only 2 per repo and caches results.
+**Where v1 is today**
+- Explanations are intentionally short and high-level, built to get beginners oriented fast. Deeper analysis of how a project works is the next step.
+- Understands connections in **JavaScript/TypeScript, Python and HTML**.
+- Runs on Gemma 4 locally, so detailed answers can take a bit longer on laptops without a graphics card (they stream in as they go).
+- Chrome only; requires installing Ollama and Gemma 4 yourself.
 
-## What we built today
+**Planned next**
+- [ ] **Deeper, more detailed summaries:** richer explanations of each file, section and the project as a whole
+- [ ] **AI chat assistant:** ask anything about how a codebase works, with answers grounded in the map
+- [ ] **More useful tools:** search, folder filters for large repos, and suggested starter questions
+- [ ] **More languages:** Java, Go, Rust, C# and more
+- [ ] **Better UI/UX:** a cleaner, more polished interface and one-click setup
+- [ ] Chrome Web Store release and Firefox support
 
-Everything in this repo was written during the hacking window (10:45 AM to 4:00 PM, Oct 31). We built the import parser, graph builder, Gemma prompts and streaming, the Chrome extension, and the side panel UI.
+Want to help? Open an issue. These make great first contributions.
+
+## How it was built
+
+NodeMap was built in one day at RowdyLaunch (10:45 AM to 4:00 PM, Oct 31, 2026). We built the import parser, graph builder, Gemma prompts and streaming, the Chrome extension, and the side panel UI.
 
 **Existing tools we used:** [Gemma 4](https://ai.google.dev/gemma) (Google DeepMind), [Ollama](https://ollama.com), [Cytoscape.js](https://js.cytoscape.org), the GitHub REST API.
 
@@ -138,7 +149,7 @@ Everything in this repo was written during the hacking window (10:45 AM to 4:00 
 | Name | Role | GitHub | LinkedIn |
 |---|---|---|---|
 | Austin Okuno | Analysis engine, Gemma integration | [@AustinOkuno](https://github.com/AustinOkuno) | [LinkedIn](https://www.linkedin.com/in/austin-okuno-557922431/) |
-| Naomi Teklemichael | Chrome extension, map UI | [@NaomiTeklemichael](https://github.com/naoml05) | [LinkedIn](https://linkedin.com/in/naomiteklemichael) |
+| Naomi Teklemichael | Chrome extension, map UI | [@naoml05](https://github.com/naoml05) | [LinkedIn](https://linkedin.com/in/naomiteklemichael) |
 
 ## License
 
